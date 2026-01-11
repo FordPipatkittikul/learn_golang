@@ -47,7 +47,7 @@ func main() {
 	g := z[1:]
 	
 	fmt.Println("Array length:", len(x))
-	fmt.Printf("%#v\n", y)
+	fmt.Printf("%#v\n", y) // \n foor new line
 	fmt.Printf("%#v\n", z)
 	fmt.Printf("%#v\n", g)
 	fmt.Printf("-----\n")
