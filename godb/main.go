@@ -47,12 +47,12 @@ func main() {
 	// }
 
 	// GetUserById()
-	firstUser, err := GetUserById(1)
-		if err != nil {
-		fmt.Println(err)
-		return
-	}
-	fmt.Println(firstUser)
+	// firstUser, err := GetUserById(1)
+	// 	if err != nil {
+	// 	fmt.Println(err)
+	// 	return
+	// }
+	// fmt.Println(firstUser)
 
 	// AddUser()
 	// user := Users{Username: "james_wreck", Email: "james@example.com",PasswordHash:"hashed_password_789"}
@@ -62,7 +62,7 @@ func main() {
 	// AddUser(user);
 
 	// UpdateUser()
-	// user := Users{Username: "james_bond", Email: "james_bond@example.com", PasswordHash:"hashed_password_555", Id: 3}
+	// user := Users{Username: "john_smith", Email: "john_smith@example.com", PasswordHash:"hashed_password_666", Id: 2}
 	// if(err != nil){
 	// 	panic(err)
 	// }
