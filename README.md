@@ -1,4 +1,4 @@
-# learn_golang
+# Golang
 
 ## quick command
 - go mod init <foldername>
