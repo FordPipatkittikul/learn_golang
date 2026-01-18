@@ -6,7 +6,7 @@ type customerRepositoryDB struct {
 	db *sqlx.DB
 }
 
-func NewcustomerRepositoryDB(db *sqlx.DB) customerRepositoryDB {
+func NewcustomerRepositoryDB(db *sqlx.DB) CustomerRepository {
 	return customerRepositoryDB{db: db}
 }
 

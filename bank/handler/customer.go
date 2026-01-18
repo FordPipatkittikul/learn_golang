@@ -14,7 +14,7 @@ type customerHandler struct {
 }
 
 func NewCustomerHandler(customerService service.CustomerService) customerHandler {
-	return customerHandler{customerService:customerService}
+	return customerHandler{customerService : customerService}
 }
 
 func (h customerHandler) GetCustomers(w http.ResponseWriter, r *http.Request){

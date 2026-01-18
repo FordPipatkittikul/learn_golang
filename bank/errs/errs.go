@@ -13,14 +13,21 @@ func (e AppError) Error() string {
 
 func NewNotfoundError(message string) error {
 	return AppError{
-		Code:    http.StatusNotFound,
-		Message: message,
+		Code :    http.StatusNotFound,
+		Message : message,
 	}
 }
 
 func NewUnexpectedError() error {
 	return AppError{
-		Code:    http.StatusInternalServerError,
-		Message: "unexpected error",
+		Code :    http.StatusInternalServerError,
+		Message : "unexpected error",
+	}
+}
+
+func NewValidationError(message string) error {
+	return AppError{
+		Code :    http.StatusUnprocessableEntity,
+		Message : message,
 	}
 }

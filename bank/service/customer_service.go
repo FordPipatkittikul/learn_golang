@@ -11,7 +11,7 @@ type customerService struct {
 	customerRepo repository.CustomerRepository
 }
 
-func NewCustomerService(customerRepo repository.CustomerRepository) customerService {
+func NewCustomerService(customerRepo repository.CustomerRepository) CustomerService {
 	return customerService{customerRepo : customerRepo}
 }
 
@@ -32,7 +32,7 @@ func (s customerService) GetCustomers() ([]CustomerResponse, error) {
 		CustomerResponses = append(CustomerResponses, customerReponse)
 	}
 
-	return CustomerResponses, err
+	return CustomerResponses, nil
 }
 
 func (s customerService) GetCustomer(id int) (*CustomerResponse, error) {
@@ -51,5 +51,5 @@ func (s customerService) GetCustomer(id int) (*CustomerResponse, error) {
 		Status : customer.Status,
 	}
 
-	return &customerResponse, err
+	return &customerResponse, nil
 }
