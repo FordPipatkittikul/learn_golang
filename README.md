@@ -1,9 +1,10 @@
 # learn_golang
 
 ### quick command
+- go mod init <foldername>
+- go run <filename.go>
 - go env
 - go env GOPATH
-- go run <filename.go>
 
 ### 🌐 Official Go Websites
 
