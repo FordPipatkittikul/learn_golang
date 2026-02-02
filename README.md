@@ -1,12 +1,12 @@
-# learn_golang
+# Golang
 
-### quick command
+## quick command
 - go mod init <foldername>
 - go run <filename.go>
 - go env
 - go env GOPATH
 
-### 🌐 Official Go Websites
+## 🌐 Official Go Websites
 
 Go Language (Official Site)
 https://go.dev
@@ -33,59 +33,108 @@ https://go.dev/wiki/SQLDrivers
 
 - A curated list of available SQL drivers compatible with Go’s database/sql package.
 
-### 📦 Go Packages Used
-### Database & SQL
+## Go Packages Used
 
-database/sql
-https://pkg.go.dev/database/sql
+### Database & ORM
+- **database/sql** – Go standard SQL interface  
+  https://pkg.go.dev/database/sql
 
-- Go’s standard database interface.
-- Provides generic SQL database access (connection pooling, querying, transactions) independent of the underlying driver.
+- **sqlx (jmoiron/sqlx)** – Extensions for `database/sql` (struct scan, named queries)  
+  https://pkg.go.dev/github.com/jmoiron/sqlx
 
-sqlx (jmoiron/sqlx)
-https://pkg.go.dev/github.com/jmoiron/sqlx
+- **go-mssqldb** – Microsoft SQL Server driver for Go  
+  https://pkg.go.dev/github.com/denisenkom/go-mssqldb
 
-- An extension of database/sql that adds:
-- Struct scanning
-- Named queries
-- Cleaner and more convenient database code
+- **go-sql-driver/mysql** – MySQL driver for Go  
+  https://pkg.go.dev/github.com/go-sql-driver/mysql
 
-Microsoft SQL Server Driver (go-mssqldb)
-https://pkg.go.dev/github.com/denisenkom/go-mssqldb
+- **gorm** – ORM library for Go  
+  https://pkg.go.dev/gorm.io/gorm
 
-- A SQL Server driver implementation for Go, used together with database/sql or sqlx.
+- **gorm MySQL driver** – MySQL dialect for GORM  
+  https://pkg.go.dev/gorm.io/driver/mysql
 
-MySQL Driver (go-sql-driver/mysql)
-https://pkg.go.dev/github.com/go-sql-driver/mysql
+---
 
-- A popular and stable MySQL driver for Go, compatible with database/sql.
+### Web & HTTP
+- **net/http** – Go standard HTTP server and client  
+  https://pkg.go.dev/net/http
 
-### Web & Routing
+- **net/http/httptest** – HTTP testing utilities  
+  https://pkg.go.dev/net/http/httptest
 
-gorilla/mux
-https://pkg.go.dev/github.com/gorilla/mux
+- **gorilla/mux** – HTTP router and URL matcher  
+  https://pkg.go.dev/github.com/gorilla/mux
 
-- A powerful HTTP request router and URL matcher.
-- Commonly used to build REST APIs with:
-- Path parameters
-- HTTP method matching
-- Middleware support
+- **fiber v2** – High-performance web framework  
+  https://pkg.go.dev/github.com/gofiber/fiber/v2
 
-Logging
+- **fiber jwt** – JWT middleware for Fiber  
+  https://pkg.go.dev/github.com/gofiber/jwt/v2
 
-zap (Uber)
-https://pkg.go.dev/go.uber.org/zap
+- **fiber adaptor** – Adapter between `net/http` and Fiber  
+  https://pkg.go.dev/github.com/gofiber/adaptor/v2
 
-- A fast, structured, production-ready logging library.
-- Designed for high performance with JSON logs and leveled logging (Info, Debug, Error, etc.).
+---
 
-### Configuration
+### Authentication & Security
+- **bcrypt** – Password hashing  
+  https://pkg.go.dev/golang.org/x/crypto/bcrypt
 
-viper (spf13/viper)
-https://pkg.go.dev/github.com/spf13/viper
+- **jwt-go** – JSON Web Token implementation  
+  https://pkg.go.dev/github.com/dgrijalva/jwt-go
 
-- A configuration management library that supports:
-- Config files (YAML, JSON, TOML)
-- Environment variables
-- Default values
-- Hot reloading (optional)
+---
+
+### Logging & Configuration
+- **zap** – Structured, high-performance logging  
+  https://pkg.go.dev/go.uber.org/zap
+
+- **viper** – Configuration management  
+  https://pkg.go.dev/github.com/spf13/viper
+
+---
+
+### Testing & Mocking
+- **testify** – Assertions and testing helpers  
+  https://pkg.go.dev/github.com/stretchr/testify
+
+- **gomock** – Mocking framework for Go  
+  https://pkg.go.dev/github.com/golang/mock/gomock
+
+---
+
+### Messaging, Cache & Resilience
+- **redis v8** – Redis client  
+  https://pkg.go.dev/github.com/go-redis/redis/v8
+
+- **hystrix-go** – Circuit breaker implementation  
+  https://pkg.go.dev/github.com/afex/hystrix-go/hystrix
+
+- **sarama** – Apache Kafka client  
+  https://pkg.go.dev/github.com/Shopify/sarama
+
+---
+
+### Utilities & Docs
+- **uuid** – UUID generation  
+  https://pkg.go.dev/github.com/google/uuid
+
+- **godoc** – Go documentation tool  
+  https://pkg.go.dev/golang.org/x/tools/cmd/godoc
+
+---
+
+### gRPC & Protobuf
+- **grpc** – Remote procedure call framework  
+  https://pkg.go.dev/google.golang.org/grpc
+
+- **protobuf** – Protocol Buffers  
+  https://pkg.go.dev/google.golang.org/protobuf
+
+- **protoc-gen-go** – Protobuf Go code generator  
+  https://pkg.go.dev/google.golang.org/protobuf/cmd/protoc-gen-go
+
+- **protoc-gen-go-grpc** – gRPC Go code generator  
+  https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
