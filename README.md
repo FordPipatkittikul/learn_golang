@@ -1,6 +1,6 @@
 # Golang
 
-## quick command
+## Command
 - go mod init <foldername>
 - go run <filename.go>
 - go env
