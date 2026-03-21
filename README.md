@@ -39,7 +39,7 @@ Hello Dev
 Use when:
 Quickly testing code
 
-Iterating fast
+---
 
 2 go fmt
 ```
@@ -61,9 +61,9 @@ func main() {
 ```
  Use when:
 
-After writing code
+After writing code or before committing
 
-Before committing
+---
 
 3 go vet
 ```
@@ -78,15 +78,14 @@ Example:
 fmt.Printf("%d", "hello") // WRONG
 ```
 go vet warns:
-
+```
 Printf format %d has arg "hello" of wrong type string
-
+```
 Use when:
 
-Before committing
+Before committing to Catch hidden issues
 
-Catch hidden issues
-
+---
 
 4 go test
 ```
@@ -127,7 +126,7 @@ Use when:
 
 Validating logic
 
-Before pushing code
+---
 
 5 go build
 ```
@@ -153,6 +152,7 @@ Docker / deployment
 
 Unlike go run, this creates a real file
 
+---
 
 6 go env
 ```
@@ -180,9 +180,9 @@ Output:
 ```
 Use when:
 
-Debugging environment issues
+Debugging environment issues and Checking paths
 
-Checking paths
+---
 
 ## REAL-WORLD FLOW (IMPORTANT)
 
@@ -212,6 +212,8 @@ go mod init github.com/yourname/myapp
 ```
  Creates go.mod
 
+---
+
 2 Add dependencies
 ```
 go get <package>
@@ -221,6 +223,8 @@ Example:
 go get github.com/gin-gonic/gin
 ```
 Adds dependency to go.mod and downloads it
+
+---
 
 3 Update dependencies
 ```
@@ -233,6 +237,8 @@ Or specific:
 go get -u github.com/gin-gonic/gin
 ```
 
+---
+
 4 Clean up dependencies (VERY IMPORTANT)
 ```
 go mod tidy
@@ -243,11 +249,15 @@ Keeps go.mod and go.sum clean
 
 Interview tip: Always run this before committing
 
+---
+
 5 Download dependencies
 ```
 go mod download
 ```
 Downloads modules without building
+
+---
 
 6 Check dependencies
 ```
@@ -255,16 +265,22 @@ go list -m all
 ```
 Shows all modules used
 
+---
+
 7 Why is this dependency here?
 ```
 go mod why <module>
 ```
+
+---
 
 8 Verify dependencies
 ```
 go mod verify
 ```
 Ensures downloaded modules are not corrupted
+
+---
 
 9 Vendor dependencies
 ```
@@ -273,6 +289,8 @@ go mod vendor
 Copies dependencies into /vendor folder
 
 Used in enterprise / offline builds
+
+---
 
 ## 🌐 Official Go Websites
 
