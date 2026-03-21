@@ -50,6 +50,8 @@ https://go.dev/wiki/SQLDrivers
 
 - **gorm** – ORM library for Go  
   https://pkg.go.dev/gorm.io/gorm
+  
+  [https://gorm.io/docs/conventions.html](https://gorm.io/docs/)
 
 - **gorm MySQL driver** – MySQL dialect for GORM  
   https://pkg.go.dev/gorm.io/driver/mysql
@@ -68,6 +70,8 @@ https://go.dev/wiki/SQLDrivers
 
 - **fiber v2** – High-performance web framework  
   https://pkg.go.dev/github.com/gofiber/fiber/v2
+
+  https://docs.gofiber.io/
 
 - **fiber jwt** – JWT middleware for Fiber  
   https://pkg.go.dev/github.com/gofiber/jwt/v2
