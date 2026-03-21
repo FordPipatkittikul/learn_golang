@@ -1,10 +1,278 @@
 # Golang
 
-## Command
-- go mod init <foldername>
-- go run <filename.go>
-- go env
-- go env GOPATH
+## GO Command
+
+| Phase             | Commands                     |
+| ----------------- | ---------------------------- |
+| Development | `go run`, `go fmt`, `go vet` |
+| Testing        | `go test`                    |
+| Deployment     | `go build`                   |
+| Environment    | `go env`                     |
+
+1 go run
+
+```
+go run main.go
+```
+What it does:
+
+Compiles + runs your code instantly (no binary saved)
+
+Example:
+```
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello Dev")
+}
+```
+Run:
+```
+go run main.go
+```
+Output:
+```
+Hello Dev
+```
+Use when:
+Quickly testing code
+
+Iterating fast
+
+2 go fmt
+```
+go fmt ./...
+```
+What it does:
+
+Automatically formats your code (indentation, spacing)
+
+Example (before):
+```
+func main(){fmt.Println("hi")}
+```
+After go fmt:
+```
+func main() {
+    fmt.Println("hi")
+}
+```
+ Use when:
+
+After writing code
+
+Before committing
+
+3 go vet
+```
+go vet ./...
+```
+What it does:
+
+Finds potential bugs (not syntax errors)
+
+Example:
+```
+fmt.Printf("%d", "hello") // WRONG
+```
+go vet warns:
+
+Printf format %d has arg "hello" of wrong type string
+
+Use when:
+
+Before committing
+
+Catch hidden issues
+
+
+4 go test
+```
+go test ./...
+```
+What it does:
+
+Runs all test files (*_test.go)
+
+Example:
+```
+// math.go
+func Add(a, b int) int {
+    return a + b
+}
+```
+```
+// math_test.go
+package main
+
+import "testing"
+
+func TestAdd(t *testing.T) {
+    if Add(2, 3) != 5 {
+        t.Error("Expected 5")
+    }
+}
+```
+Run:
+```
+go test
+```
+Output:
+```
+PASS
+```
+Use when:
+
+Validating logic
+
+Before pushing code
+
+5 go build
+```
+go build -o app
+```
+What it does:
+
+Compiles code into executable
+
+Example:
+```
+./app
+```
+Output:
+```
+Hello Dev
+```
+Use when:
+
+Creating production binary
+
+Docker / deployment
+
+Unlike go run, this creates a real file
+
+
+6 go env
+```
+go env
+```
+What it does:
+
+Shows Go environment config
+
+Example output:
+```
+GOOS="linux"
+GOARCH="amd64"
+GOPATH="/home/user/go"
+GOROOT="/usr/local/go"
+```
+
+6.5 go env GOPATH
+```
+go env GOPATH
+```
+Output:
+```
+/home/user/go
+```
+Use when:
+
+Debugging environment issues
+
+Checking paths
+
+## REAL-WORLD FLOW (IMPORTANT)
+
+- During development:
+```
+go run main.go
+go fmt ./...
+go vet ./...
+```
+- Before pushing code:
+```
+go test ./...
+```
+- For deployment:
+```
+go build -o app
+```
+## Go Modules Commands
+
+1 Initialize a module
+```
+go mod init <module-name>
+```
+Example:
+```
+go mod init github.com/yourname/myapp
+```
+ Creates go.mod
+
+2 Add dependencies
+```
+go get <package>
+```
+Example:
+```
+go get github.com/gin-gonic/gin
+```
+Adds dependency to go.mod and downloads it
+
+3 Update dependencies
+```
+go get -u ./...
+```
+Updates all dependencies to latest versions
+
+Or specific:
+```
+go get -u github.com/gin-gonic/gin
+```
+
+4 Clean up dependencies (VERY IMPORTANT)
+```
+go mod tidy
+```
+Removes unused deps + adds missing ones
+
+Keeps go.mod and go.sum clean
+
+Interview tip: Always run this before committing
+
+5 Download dependencies
+```
+go mod download
+```
+Downloads modules without building
+
+6 Check dependencies
+```
+go list -m all
+```
+Shows all modules used
+
+7 Why is this dependency here?
+```
+go mod why <module>
+```
+
+8 Verify dependencies
+```
+go mod verify
+```
+Ensures downloaded modules are not corrupted
+
+9 Vendor dependencies
+```
+go mod vendor
+```
+Copies dependencies into /vendor folder
+
+Used in enterprise / offline builds
 
 ## 🌐 Official Go Websites
 
