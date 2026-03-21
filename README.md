@@ -410,3 +410,11 @@ https://go.dev/wiki/SQLDrivers
 - **protoc-gen-go-grpc** – gRPC Go code generator  
   https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
+## Recommend Visual Studio Code and Extension
+
+- Go https://marketplace.visualstudio.com/items?itemName=golang.Go
+- Error Lens https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens
+- Docker https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker
+- K6 snippets https://marketplace.visualstudio.com/items?itemName=mJacobson.snippets-for-k6
+- vscode-proto3 https://marketplace.visualstudio.com/items?itemName=zxh404.vscode-proto3
+
