@@ -61,3 +61,7 @@ Presentation : handler
 Business : service layer (this is where we should handle log)
 
 Database : repository layer
+
+## Implicit Interface Implementation (Go term)
+
+A type implements an interface without explicitly declaring it
