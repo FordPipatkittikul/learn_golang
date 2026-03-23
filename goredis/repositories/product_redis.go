@@ -51,7 +51,7 @@ func (r productRepositoryRedis) GetProducts() (products []product, err error) {
 		return nil, err
 	}
 
-	r.redisClient.Set(context.Background(), key, string(data), time.Second*10).Err()
+	err = r.redisClient.Set(context.Background(), key, string(data), time.Second*10).Err()
 	if err != nil {
 		return nil, err
 	}
