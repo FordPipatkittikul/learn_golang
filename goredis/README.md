@@ -1,4 +1,4 @@
-# redis, k6, grafana with golang
+# redis, k6, grafana, influxdb, mariadb with golang
 
 ## Document
 
@@ -145,6 +145,17 @@ USE k6
 SHOW MEASUREMENTS
 SELECT * FROM http_req_duration LIMIT 10
 ```
+
+## 📈 Grafana
+### What it is
+- Visualization tool (graphs, dashboards)
+### Setup
+- URL: http://localhost:3000
+  - Add datasource:
+    - Type: InfluxDB
+    - URL: http://influxdb:8086
+    - DB: k6
+
 
 ## 🐬 MariaDB
 
