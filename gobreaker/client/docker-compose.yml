@@ -1,0 +1,7 @@
+version: '3.9'
+services: 
+  hystrix:
+    image: steeltoeoss/hystrix-dashboard
+    container_name: hystrix
+    ports: 
+      - 9002:7979
