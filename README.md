@@ -11,7 +11,7 @@
 
 1 go run
 
-```
+```bash
 go run main.go
 ```
 What it does:
@@ -19,7 +19,7 @@ What it does:
 Compiles + runs your code instantly (no binary saved)
 
 Example:
-```
+```go
 package main
 
 import "fmt"
@@ -29,7 +29,7 @@ func main() {
 }
 ```
 Run:
-```
+```bash
 go run main.go
 ```
 Output:
@@ -42,7 +42,7 @@ Quickly testing code
 ---
 
 2 go fmt
-```
+```bash
 go fmt ./...
 ```
 What it does:
@@ -50,11 +50,11 @@ What it does:
 Automatically formats your code (indentation, spacing)
 
 Example (before):
-```
+```go
 func main(){fmt.Println("hi")}
 ```
 After go fmt:
-```
+```go
 func main() {
     fmt.Println("hi")
 }
@@ -66,7 +66,7 @@ After writing code or before committing
 ---
 
 3 go vet
-```
+```bash
 go vet ./...
 ```
 What it does:
@@ -74,7 +74,7 @@ What it does:
 Finds potential bugs (not syntax errors)
 
 Example:
-```
+```go
 fmt.Printf("%d", "hello") // WRONG
 ```
 go vet warns:
@@ -88,7 +88,7 @@ Before committing to Catch hidden issues
 ---
 
 4 go test
-```
+```bash
 go test ./...
 ```
 What it does:
@@ -96,13 +96,13 @@ What it does:
 Runs all test files (*_test.go)
 
 Example:
-```
+```go
 // math.go
 func Add(a, b int) int {
     return a + b
 }
 ```
-```
+```go
 // math_test.go
 package main
 
@@ -115,7 +115,7 @@ func TestAdd(t *testing.T) {
 }
 ```
 Run:
-```
+```bash
 go test
 ```
 Output:
@@ -129,7 +129,7 @@ Validating logic
 ---
 
 5 go build
-```
+```bash
 go build -o app
 ```
 What it does:
@@ -155,7 +155,7 @@ Unlike go run, this creates a real file
 ---
 
 6 go env
-```
+```bash
 go env
 ```
 What it does:
@@ -171,7 +171,7 @@ GOROOT="/usr/local/go"
 ```
 
 6.5 go env GOPATH
-```
+```bash
 go env GOPATH
 ```
 Output:
@@ -187,27 +187,27 @@ Debugging environment issues and Checking paths
 ## REAL-WORLD FLOW (IMPORTANT)
 
 - During development:
-```
+```bash
 go run main.go
 go fmt ./...
 go vet ./...
 ```
 - Before pushing code:
-```
+```bash
 go test ./...
 ```
 - For deployment:
-```
+```bash
 go build -o app
 ```
 ## Go Modules Commands
 
 1 Initialize a module
-```
+```bash
 go mod init <module-name>
 ```
 Example:
-```
+```bash
 go mod init github.com/yourname/myapp
 ```
  Creates go.mod
@@ -215,11 +215,11 @@ go mod init github.com/yourname/myapp
 ---
 
 2 Add dependencies
-```
+```bash
 go get <package>
 ```
 Example:
-```
+```bash
 go get github.com/gin-gonic/gin
 ```
 Adds dependency to go.mod and downloads it
@@ -227,20 +227,20 @@ Adds dependency to go.mod and downloads it
 ---
 
 3 Update dependencies
-```
+```bash
 go get -u ./...
 ```
 Updates all dependencies to latest versions
 
 Or specific:
-```
+```bash
 go get -u github.com/gin-gonic/gin
 ```
 
 ---
 
 4 Clean up dependencies (VERY IMPORTANT)
-```
+```bash
 go mod tidy
 ```
 Removes unused deps + adds missing ones
@@ -252,7 +252,7 @@ Interview tip: Always run this before committing
 ---
 
 5 Download dependencies
-```
+```bash
 go mod download
 ```
 Downloads modules without building
@@ -260,7 +260,7 @@ Downloads modules without building
 ---
 
 6 Check dependencies
-```
+```bash
 go list -m all
 ```
 Shows all modules used
@@ -268,14 +268,14 @@ Shows all modules used
 ---
 
 7 Why is this dependency here?
-```
+```bash
 go mod why <module>
 ```
 
 ---
 
 8 Verify dependencies
-```
+```bash
 go mod verify
 ```
 Ensures downloaded modules are not corrupted
@@ -283,7 +283,7 @@ Ensures downloaded modules are not corrupted
 ---
 
 9 Vendor dependencies
-```
+```bash
 go mod vendor
 ```
 Copies dependencies into /vendor folder
