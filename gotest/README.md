@@ -4,19 +4,6 @@ This project demonstrates how to write **unit tests**, **benchmarks**, and **exa
 
 ---
 
-## Project Structure
-
-```
-gotest/
- ├── services/
- │    ├── grade.go
- │    └── grade_test.go
-```
-
----
-
-## Business Logic
-
 ### `CheckGrade`
 
 ```go
@@ -37,8 +24,6 @@ func CheckGrade(score int) string {
 ```
 
 ---
-
-## Test Types
 
 ### 1. Unit Test
 
@@ -103,8 +88,6 @@ func ExampleCheckGrade() {
 ```
 
 ---
-
-## 🚀 Commands
 
 ### Run Unit Tests
 
@@ -173,7 +156,7 @@ go test -run Example
 
 ---
 
-## VS Code Configuration (Optional)
+### VS Code Configuration (Optional)
 
 Enable coverage highlighting in VS Code:
 
@@ -191,7 +174,7 @@ Enable coverage highlighting in VS Code:
 
 ---
 
-## Notes
+### Notes
 
 * **Unit Test** → correctness
 * **Benchmark** → performance
@@ -200,7 +183,7 @@ Enable coverage highlighting in VS Code:
 
 ---
 
-## Tips
+### Tips
 
 * Use table-driven tests for scalability
 * Use subtests (`t.Run`) for better debugging
@@ -209,5 +192,106 @@ Enable coverage highlighting in VS Code:
 ---
 
 
-## Integration test
+# Integration test
 
+### Build Tag (Important)
+```
+//go:build integration
+```
+This means the test will NOT run by default.
+
+Run it with:
+```
+go test <filepath> -tags=integration
+```
+Good practice:
+
+- Unit tests = fast, default
+- Integration tests = optional, slower
+
+
+# Mock
+
+### Key Concepts (Creation)
+- mock.Mock → gives you .On(), .Return(), .Called()
+- You MUST implement the same interface method
+- m.Called(...) = capture input + return fake output
+
+```go
+
+// promotion file
+
+package repositories
+
+type Promotion struct {
+	ID				int
+	PurchaseMin 	int
+	DiscountPercent int
+}
+
+type PromotionRepository interface {
+	GetPromotion() (Promotion, error)
+}
+
+
+// promotion_mock file
+package repositories
+
+import "github.com/stretchr/testify/mock"
+
+type promotionRepositoryMock struct {
+	mock.Mock
+}
+
+func NewPromotionRepositoryMock() *promotionRepositoryMock{
+	return &promotionRepositoryMock{}
+}
+
+func (m *promotionRepositoryMock) GetPromotion() (Promotion, error) {
+	args := m.Called()
+	return args.Get(0).(Promotion), args.Error(1)
+}
+```
+
+- .On() → define expectation
+- .Return() → define output
+
+```go
+func TestPromotionCalculateDiscount(t *testing.T) {
+	
+	type testCase struct {
+		name 				string
+		PurchaseMin 		int
+		DiscountPercent		int
+		amount 				int
+		expected			int
+	}
+
+	cases := []testCase{
+		{name: "applied 100", PurchaseMin: 100, DiscountPercent: 20, amount: 100, expected: 80},
+		{name: "applied 200", PurchaseMin: 100, DiscountPercent: 20, amount: 200,expected: 160},
+		{name: "applied 300", PurchaseMin: 100, DiscountPercent: 20, amount: 300,expected: 240},
+		{name: "not applied", PurchaseMin: 100, DiscountPercent: 20, amount: 50,expected: 50},
+	}
+
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+
+			// Arrange
+			promoRepo := repositories.NewPromotionRepositoryMock()
+			promoRepo.On("GetPromotion").Return(repositories.Promotion{
+				ID:					1,
+				PurchaseMin: 		c.PurchaseMin,
+				DiscountPercent: 	c.DiscountPercent,
+			}, nil)
+			promoService := services.NewPromotionService(promoRepo)
+
+			// Act
+			discount, _ := promoService.CalculateDiscount(c.amount)
+	
+			// Assert
+			assert.Equal(t, c.expected, discount)
+		})
+	}
+}
+```
