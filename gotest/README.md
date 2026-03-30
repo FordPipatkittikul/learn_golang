@@ -63,11 +63,10 @@ func TestCheckGrade(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			grade := services.CheckGrade(c.score)
 
-			if grade != c.expected {
-				t.Errorf("got %v expected %v", grade, c.expected)
-			}
+			grade := services.CheckGrade(c.score)
+			assert.Equal(t, c.expected, grade)
+			
 		})
 	}
 }
@@ -209,4 +208,6 @@ Enable coverage highlighting in VS Code:
 
 ---
 
+
+## Integration test
 
